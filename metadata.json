@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Lưu Bút Thanh Xuân - Nguyễn Thuận Phát",
+  "description": "Trang web lưu bút dành cho Nguyễn Thuận Phát học sinh lớp 12A2 trường THPT Chuyên Hùng Vương, mang phong cách brat aesthetic.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": []
+}

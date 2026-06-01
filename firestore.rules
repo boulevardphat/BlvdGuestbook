@@ -1,0 +1,36 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isValidId(id) { return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$'); }
+    function incoming() { return request.resource.data; }
+
+    function isValidGuestbookEntry(data) {
+       return data.keys().hasAll(['fullName', 'nickname', 'className', 'schoolName', 'lines', 'texts', 'images', 'createdAt'])
+       && data.keys().size() <= 13
+       && data.fullName is string && data.fullName.size() <= 100
+       && data.nickname is string && data.nickname.size() <= 100
+       && data.className is string && data.className.size() <= 100
+       && data.schoolName is string && data.schoolName.size() <= 100
+       && (data.get('avatarUrl', null) == null || (data.avatarUrl is string && data.avatarUrl.size() <= 1000000))
+       && (data.get('canvasImage', null) == null || (data.canvasImage is string && data.canvasImage.size() <= 1048000))
+       && (data.get('audioUrl', null) == null || (data.audioUrl is string && data.audioUrl.size() <= 10485760))
+       && data.lines is string && data.lines.size() <= 1000000
+       && data.texts is string && data.texts.size() <= 1000000
+       && data.images is string && data.images.size() <= 2000000
+       && (data.get('longText', null) == null || (data.longText is string && data.longText.size() <= 50000))
+       && (data.get('longTextMeta', null) == null || (data.longTextMeta is map))
+       && data.createdAt == request.time;
+    }
+
+    match /guestbookEntries/{entryId} {
+      allow create: if isValidId(entryId) && isValidGuestbookEntry(incoming());
+      allow read: if true; 
+      allow update: if false;
+      allow delete: if true; 
+    }
+  }
+}

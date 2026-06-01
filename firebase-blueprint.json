@@ -1,0 +1,60 @@
+{
+  "entities": {
+    "GuestbookEntry": {
+      "title": "Guestbook Entry",
+      "description": "A single entry in the guestbook containing the canvas data and user details.",
+      "type": "object",
+      "properties": {
+        "fullName": {
+           "type": "string"
+        },
+        "nickname": {
+           "type": "string"
+        },
+        "className": {
+           "type": "string"
+        },
+        "schoolName": {
+           "type": "string"
+        },
+        "avatarUrl": {
+           "type": "string",
+           "nullable": true
+        },
+        "createdAt": {
+           "type": "timestamp"
+        },
+        "lines": {
+           "type": "string"
+        },
+        "texts": {
+           "type": "string"
+        },
+        "images": {
+           "type": "string"
+        },
+        "longText": {
+           "type": "string"
+        },
+        "longTextMeta": {
+           "type": "object",
+           "properties": {
+             "font": { "type": "string" },
+             "size": { "type": "number" },
+             "color": { "type": "string" },
+             "align": { "type": "string" },
+             "isBold": { "type": "boolean" },
+             "isItalic": { "type": "boolean" }
+           }
+        }
+      },
+      "required": ["fullName", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/guestbookEntries/{entryId}": {
+      "schema": { "$ref": "GuestbookEntry" },
+      "description": "Store guestbook entries submitted by anonymous users."
+    }
+  }
+}
