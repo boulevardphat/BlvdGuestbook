@@ -827,7 +827,7 @@ export default function GuestbookEditor({ guestData, onComplete }: GuestbookEdit
                     <CanvasBackground type={background} width={dimensions.width} height={dimensions.height} />
                     
                     <Polaroid
-                      url="/img/avatar.jpg"
+                      url="https://i.ibb.co/TD9mb1pB/avatar.jpg"
                       name="t. phát"
                       x={dimensions.width < 768 ? 32 : 80}
                       y={dimensions.width < 768 ? 32 : 80}

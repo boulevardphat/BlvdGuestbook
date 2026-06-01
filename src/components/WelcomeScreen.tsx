@@ -105,7 +105,7 @@ export default function WelcomeScreen({ onComplete, onOpenGallery }: WelcomeScre
           <div className="w-full aspect-square bg-gray-200 overflow-hidden">
             {/* Fallback image if mainavt doesn't exist */}
             <img 
-              src="/img/avatar.jpg" 
+              src="https://i.ibb.co/TD9mb1pB/avatar.jpg" 
               alt="Nguyễn Thuận Phát" 
               className="w-full h-full object-cover"
               onError={(e) => {

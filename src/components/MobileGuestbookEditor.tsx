@@ -654,7 +654,7 @@ export default function MobileGuestbookEditor({ guestData, onComplete }: MobileG
                   
                   {/* Phat's Avatar on drawing stage */}
                   <Polaroid
-                    url="/img/avatar.jpg"
+                    url="https://i.ibb.co/TD9mb1pB/avatar.jpg"
                     name="t. phát"
                     x={28}
                     y={28}

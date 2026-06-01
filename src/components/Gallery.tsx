@@ -193,7 +193,7 @@ export default function Gallery({ onBack }: { onBack: () => void }) {
               <CanvasBackground type="dotted" width={800} height={600} />
               
               <Polaroid
-                url="/img/avatar.jpg"
+                url="https://i.ibb.co/TD9mb1pB/avatar.jpg"
                 name="t. phát"
                 x={80}
                 y={80}
